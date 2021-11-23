@@ -2,7 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.views.generic import ListView
+from .forms import EmailPostForm
 
+""" old post list
 def post_list(request):
     object_list = Post.published.all()
     paginator = Paginator(object_list, 3)
@@ -17,13 +19,14 @@ def post_list(request):
                   'blog/post/list.html',
                   {'page': page,
                    'posts': posts})
+"""
 
 def post_detail(request,year,month,day,post):
-    post = get_object_or_404(Post,slug=post,
+    post = get_object_or_404(Post, slug=post,
                            status='published',
-                           published__year=year,
-                           published__month=month,
-                           published__day=day)
+                           publish__year=year,
+                           publish__month=month,
+                           publish__day=day)
     return render(request,
                   'blog/post/detail.html',
                   {'post': post})
@@ -33,3 +36,14 @@ class PostListView(ListView):
     context_object_name = 'posts'
     paginate_by = 3
     template_name = 'blog/post/list.html'
+
+def post_share(request, post_id):
+    post = get_object_or_404(Post,id=post_id, status='published')
+    if request.method == 'POST':
+        form=EmailPostForm(request.POST)
+        if form.is_valid():
+            form.cleaned_data()
+    else:
+        form = EmailPostForm()
+    return render(request, 'blog/post/share.html',{'post': post,
+                                                   'form':form})
