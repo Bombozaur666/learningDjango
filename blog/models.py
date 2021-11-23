@@ -42,7 +42,9 @@ class Post(models.Model):
                              self.publish.day,
                              self.slug])
 
-
+class ActivatedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(active=True)
 class Comement(models.Model):
     post = models.ForeignKey(Post,
                              on_delete = models.CASCADE,
@@ -53,6 +55,8 @@ class Comement(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
+    activated = ActivatedManager()
+    objects= models.Manager()
 
     class Meta:
         ordering = ('created',)
