@@ -11,7 +11,7 @@ class PublishedManager(models.Manager):
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
-        ('publishefd', 'Published'),
+        ('published', 'Published'),
     )
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250,
@@ -38,6 +38,6 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog:post_detail',
                        args=[self.publish.year,
-                             self.publish.strmtime('%m'),
-                             self.publish.strftime('%d'),
+                             self.publish.month,
+                             self.publish.day,
                              self.slug])
