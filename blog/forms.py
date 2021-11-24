@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comement
+from .models import Comment
 
 class EmailPostForm(forms.Form):
     name=forms.CharField(max_length=25)
@@ -10,5 +10,5 @@ class EmailPostForm(forms.Form):
 
 class CommentForm(forms.ModelForm):
     class Meta:
-        model = Comement
+        model = Comment
         fields = ('name', 'email', 'body')
