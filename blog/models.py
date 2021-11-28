@@ -50,7 +50,7 @@ class ActivatedManager(models.Manager):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post,
-                             on_delete = models.CASCADE,
+                             on_delete=models.CASCADE,
                              related_name='comments')
     name = models.CharField(max_length=80)
     email = models.EmailField()
@@ -66,4 +66,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Komentarsz dodany przez {} dla posta {}'.format(self.name, self.post)
+
+    def get_absolute_url(self):
+        return Post.published.get(id=self.post_id).get_absolute_url()
 
