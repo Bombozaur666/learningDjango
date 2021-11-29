@@ -1,5 +1,6 @@
 {% load static %}
 {% load blog_tags %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 </head>
-<body>
+<body style="padding: 10px;">
     <div id="label">
         <a href = "{% url "blog:post_list" %}">BLOG</a>
         <a href = "/admin/">ADMIN</a>

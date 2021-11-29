@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags  %}
 {% block title %}Udostępnij post{% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
   {% else %}
     <h1>Udostępnij "{{ post.title }}" przez e-mail</h1>
     <form method="post">
-      {{ form.as_p }}
+      {{ form|crispy }}
       {% csrf_token %}
       <input type="submit" value="Wyślij e-mail">
     </form>
