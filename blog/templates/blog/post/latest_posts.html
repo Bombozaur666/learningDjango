@@ -1,7 +1,10 @@
-<ul>
-    {% for post in latest_post %}
-    <li>
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+<ul class="nav flex-column">
+    <li class="nav-item">
+        Ostatnie posty:
     </li>
+    {% for post in latest_post %}
+        <li class="nav-item">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </li>
     {% endfor %}
 </ul>

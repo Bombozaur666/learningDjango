@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "blog/blog_base.html" %}
 {% load blog_tags %}
 
 {% block title %}Mój Blog{% endblock %}
 
-{% block content %}
+{% block content2 %}
     <h1>Mój blog</h1>
     {% if tag %}
         <h2>Posty oznaczone tagiem "{{ tag.name }}"</h2>
@@ -28,7 +28,11 @@
             <p>
                 Opublikowany {{ post.publish }} przez {{ post.author }}
             </p>
-            <p class="card-text">{{ post.body|markdown|truncatewords_html:30 }}</p>
+            <p class="card-text">
+                <span class="placeholder" style="width: 25%;"></span>
+                {{ post.body|markdown|truncatewords_html:30 }}
+            </p>
+
         </div>
     </div>
   {% endfor %}
