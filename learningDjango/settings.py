@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'crispy_forms',
     'taggit',
+    'django.contrib.postgres',
 ]
 #bootstrap
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -85,8 +86,10 @@ WSGI_APPLICATION = 'learningDjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'learningDjango2',
+        'USER': 'bombo',
+        'PASSWORD': 'learn',
     }
 }
 

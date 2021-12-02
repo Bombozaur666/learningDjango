@@ -1,0 +1,30 @@
+{% extends "blog/blog_base.html" %}
+{% load crispy_forms_tags  %}
+{% block title %}Wyszukaj{% endblock %}
+
+{% block content2 %}
+    {% if query %}
+        <h1>Posty zawierające "{{ query }}"</h1>
+        <h3>Znaleziono "{{ results }}" wynik{{ results|pluralize:"ów" }}</h3>
+        <br>
+        {% for result in results %}
+            <h4><a href="{{ result.get_absolute_url }}">{{ result.title }}</a></h4>
+        {% empty %}
+            <p>
+                Brak wyników dla podanego wyszukania.
+            </p>
+        {% endfor %}
+        <p>
+            <br>
+            <a href="{% url "blog:post_search" %}">Szukaj ponownie</a>
+        </p>
+    {% else %}
+        <h1>Szukaj postów</h1>
+        <div class="form-row">
+        <form method="get" >
+            {{ form|crispy }}
+            <input type="submit" value="Szukaj" class="btn btn-primary">
+        </form>
+        </div>
+    {% endif %}
+{% endblock %}
