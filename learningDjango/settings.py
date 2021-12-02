@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'learningDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'learningDjango2',
+        'NAME': 'learningDjango',
         'USER': 'bombo',
-        'PASSWORD': 'learn',
+        'PASSWORD': 'LhpQGt@^d#K3D5%af!W$bjMYtYN&K^5r^JcKL9Pt46BDach9LX^GkTuwugev',
     }
 }
 

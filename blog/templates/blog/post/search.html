@@ -1,11 +1,12 @@
 {% extends "blog/blog_base.html" %}
 {% load crispy_forms_tags  %}
+{% load blog_tags %}
 {% block title %}Wyszukaj{% endblock %}
 
 {% block content2 %}
     {% if query %}
         <h1>Posty zawierające "{{ query }}"</h1>
-        <h3>Znaleziono "{{ results }}" wynik{{ results|pluralize:"ów" }}</h3>
+        <h3>Znaleziono "{% len_of results %}" wynik{{ results|pluralize:"ów" }}</h3>
         <br>
         {% for result in results %}
             <h4><a href="{{ result.get_absolute_url }}">{{ result.title }}</a></h4>
