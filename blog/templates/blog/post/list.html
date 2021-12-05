@@ -4,7 +4,12 @@
 {% block title %}Mój Blog{% endblock %}
 
 {% block content2 %}
-    <h1>Mój blog</h1>
+    <h1>Blog by Bombo</h1>
+    <p >
+        Szukasz posta? Sprawdź wyszukiwarke <br>
+        <a class="btn btn-primary" href="{% url "blog:post_search" %}">SEARCH</a>
+    </p>
+
     {% if tag %}
         <h2>Posty oznaczone tagiem "{{ tag.name }}"</h2>
     {% endif %}

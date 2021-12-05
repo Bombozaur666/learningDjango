@@ -1,0 +1,26 @@
+{% extends "account/account_base.html" %}
+{% load crispy_forms_tags  %}
+
+{% block title %}Logowanie{% endblock %}
+
+{% block content2 %}
+    <h1>Logowanie</h1>
+    {% if form.errors %}
+        <p>
+            Nazwa użytkownika lub login nieprawidlowe<br>
+            Spróbuj ponownie.
+        </p>
+    {%  else %}
+        <p>
+            Wypełnij formularz, aby sie zalogowac:
+        </p>
+    {%  endif %}
+    <div>
+        <form action="{% url 'account:login' %}" method="post">
+            {{ form|crispy }}
+            {%  csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p><input type="submit" value="Zaloguj się" class="btn btn-primary"></p>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "account/account_base.html" %}
+{% load crispy_forms_tags  %}
+
+{% block title %}Wylogowany{% endblock %}
+
+{% block content2 %}
+    <h1 xmlns="http://www.w3.org/1999/html">Wylogowanie</h1>
+    <p>
+        Zostałeś pomyślnie wylogowany. Mozesz się ponownie <a href="{% url 'account:login' %}">zalogowac</a>.
+    </p>
+{% endblock %}
