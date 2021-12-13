@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'blog.apps.BlogConfig',
+    'social_Media.apps.SocialMediaConfig',
     'crispy_forms',
     'taggit',
     'django.contrib.postgres',
@@ -135,8 +136,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'root')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'bootstrap'),
 )
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -150,3 +151,9 @@ EMAIL_HOST_USER = 'learndjangobybombo@gmail.com'
 EMAIL_HOST_PASSWORD = '1Ee3Z7n8Es3Lcg@gHrRE5mmc%7gC^uJUCfmaH#ge%pRsXbHQULeSsHXW&JqE'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+#Login Configuration
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'

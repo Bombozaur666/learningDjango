@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load blog_tags %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <ul class="nav nav-tabs">
+        <li {% if sections == "images" %} class="nav-item"{% endif %}>
+            <a href="#">Obrazy</a>
+        </li>
+        <li {% if sections == "images" %} class="nav-item"{% endif %}>
+            <a href="#">Osoby</a>
+        </li>
+    {% block content2 %}0
+    {% endblock %}
+{% endblock %}

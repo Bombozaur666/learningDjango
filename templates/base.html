@@ -12,7 +12,10 @@
             <a class="nav-link" href="{% url "home_page" %}">LearningDjango</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url "blog:post_list" %}">BLOG</a>
+            <a class="nav-link" aria-current="page" href="{% url "blog:post_list" %}">BLOG APP</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/sitemap.xml">SOCIAL APP</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/admin/">ADMIN</a>
@@ -20,9 +23,18 @@
         <li class="nav-item">
             <a class="nav-link" href="/sitemap.xml">sitemap.xml</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url "account:login" %}">Zaloguj się</a>
-        </li>
+        {% if requst.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "account:logout" %}">Wyloguj się</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "account:dashboard" %}">Dashboard</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "account:login" %}">Zaloguj się</a>
+            </li>
+        {% endif %}
     </ul>
 
     <div>
